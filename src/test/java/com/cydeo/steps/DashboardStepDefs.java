@@ -39,7 +39,7 @@ public class DashboardStepDefs
         // USERS
 
        // 1. Make connection
-        DB_Util.createConnection();
+    //    DB_Util.createConnection();
 
         // 2. Run query
         DB_Util.runQuery("select count(*) from users");
@@ -66,7 +66,7 @@ public class DashboardStepDefs
                 "where is_returned = 0");
         String expectedBooksBorrowed = DB_Util.getFirstRowFirstColumn();
         Assert.assertEquals(expectedBooksBorrowed, actualBorrowedBookNumbers);
-        DB_Util.destroy();
+      //  DB_Util.destroy();
     }
 
 
