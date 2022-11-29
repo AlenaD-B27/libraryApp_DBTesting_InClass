@@ -1,5 +1,6 @@
 package com.cydeo.utility;
 
+import io.cucumber.java.eo.Se;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -383,6 +384,11 @@ public class BrowserUtil {
         Select select=new Select(element);
 
         return getElementsText(select.getOptions());
+    }
+
+    public static void selectByVisibleText(WebElement element, String option){
+        Select select = new Select(element);
+        select.selectByVisibleText(option);
     }
 
 
