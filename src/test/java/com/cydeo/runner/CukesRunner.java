@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features" ,
         glue = "com/cydeo/steps",
         dryRun = false,
-        tags = "@wip"
+        tags = "@login"
 )
 public class CukesRunner {
 
