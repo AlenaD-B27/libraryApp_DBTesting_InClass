@@ -15,12 +15,13 @@ public class LoginStepDefs {
     DashBoardPage dashBoardPage = new DashBoardPage();
 
     String actualUserName;
-    String userName = "librarian55@library";
+    String userName;
 
     @Given("the user logged in  {string} and {string}")
     public void the_user_logged_in_and(String login, String password) {
         loginPage.login(login, password);
         BrowserUtil.waitFor(2);
+        userName = login;
     }
     @When("user gets username  from user fields")
     public void user_gets_username_from_user_fields() {
