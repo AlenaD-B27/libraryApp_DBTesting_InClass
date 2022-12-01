@@ -31,6 +31,9 @@ public class UserPage extends BasePage {
     @FindBy(css = ".form-control.input-sm.input-xsmall.input-inline")
     public WebElement numberOfUsersDropdown;
 
+    @FindBy(id = "tbl_users_info")
+    public WebElement usersInfo;
+
     public WebElement editUser(String email) {
         String xpath = "//td[.='"+ email+ "']/..//a";
         return Driver.getDriver().findElement(By.xpath(xpath));

@@ -15,3 +15,6 @@ where email = 'librarian55@library';
 
 select status from users
 where email='librarian10@library';
+
+select count(*) from users
+where status = 'INACTIVE';

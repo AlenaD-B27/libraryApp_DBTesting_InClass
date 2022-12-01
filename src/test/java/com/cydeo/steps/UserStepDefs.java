@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.Arrays;
+
 
 public class UserStepDefs {
 
@@ -69,6 +71,27 @@ public class UserStepDefs {
         BrowserUtil.waitFor(1);
         userPage.saveChanges.click();
         System.out.println("--------> The User's " + email + " is activated");
+    }
+
+    @When("the user changes status {string} to {string}")
+    public void the_user_changes_status_to(String active, String inactive) {
+        BrowserUtil.waitFor(2);
+        BrowserUtil.selectByVisibleText(userPage.userStatusDropdown,inactive);
+        BrowserUtil.waitFor(2);
+    }
+
+    @Then("the user should see same number of {string} user count in database")
+    public void the_user_should_see_same_number_of_user_count_in_database(String status) {
+
+        DB_Util.runQuery("select count(*) from users\n" +
+                "where status = '" + status.toUpperCase() + "'");
+
+        String usersInfo = userPage.usersInfo.getText();
+        String actualNumber = usersInfo.substring(usersInfo.indexOf("of ") + 3, usersInfo.lastIndexOf(" "));
+
+        String expectedNumber = DB_Util.getFirstRowFirstColumn();
+
+        Assert.assertEquals(expectedNumber, actualNumber);
     }
 
 

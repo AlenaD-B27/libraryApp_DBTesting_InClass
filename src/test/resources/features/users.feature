@@ -1,5 +1,5 @@
 Feature: Users Management
-  @wip @db
+  @db
   Scenario: Updating user status as librarian should change current user status in DB
     Given the user logged in as "librarian"
     And the user navigates to "Users" page
@@ -9,3 +9,11 @@ Feature: Users Management
     Then "The user updated." message should appear
     And the users should see same status for related user in database
     And the user changes current user status "INACTIVE" to "ACTIVE"
+
+
+  @homework @wip @db
+  Scenario: Inactive users count should be same with database
+    Given the user logged in as "librarian"
+    And the user navigates to "Users" page
+    When the user changes status "ACTIVE" to "INACTIVE"
+    Then the user should see same number of "INACTIVE" user count in database
